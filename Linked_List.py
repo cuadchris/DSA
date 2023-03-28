@@ -32,7 +32,7 @@ class LinkedList:
             return
 
         current = self.head
-        while current.next != None:
+        while current.next:
             if current.next.data == data:
                 current.next = current.next.next
                 return
@@ -56,5 +56,6 @@ ll.append(2)
 ll.append(3)
 ll.deleteValue(2)
 ll.deleteValue(22)
+ll.deleteValue(3)
 ll.prepend(25)
 ll.printList()
