@@ -41,6 +41,24 @@ class LinkedList:
                 print('item not found in list')
                 return
 
+    # This one was a little tricky.
+    def reverseList(self):
+        if self.head == None:
+            print('cannot reverse empty list')
+            return
+
+        prev = None
+
+    # This is essentially just walking the head/root along the list. 
+    # O(n) time complexity.
+        while self.head:
+            next_node = self.head.next
+            self.head.next = prev
+            prev = self.head
+            self.head = next_node
+
+        self.head = prev
+
     def printList(self):
         if self.head == None:
             print('empty list')
@@ -50,12 +68,12 @@ class LinkedList:
                 print(current.data, end=' ')
                 current = current.next
 
+
 ll = LinkedList()
 ll.append(1)
 ll.append(2)
 ll.append(3)
-ll.deleteValue(2)
-ll.deleteValue(22)
-ll.deleteValue(3)
+ll.prepend(0)
 ll.prepend(25)
+ll.reverseList()
 ll.printList()
