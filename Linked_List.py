@@ -41,6 +41,19 @@ class LinkedList:
                 print('item not found in list')
                 return
 
+    def removeDuplicatesFromSorted(self):
+        if not self.head:
+            print('list is empty')
+            return
+
+        current = self.head
+
+        while current and current.next:
+            if current.data == current.next.data:
+                current.next = current.next.next
+            else:
+                current = current.next
+
     # This one was a little tricky.
     def reverseList(self):
         if self.head == None:
@@ -49,7 +62,7 @@ class LinkedList:
 
         prev = None
 
-    # This is essentially just walking the head/root along the list. 
+    # This is essentially just walking the head/root along the list.
     # O(n) time complexity.
         while self.head:
             next_node = self.head.next
@@ -72,8 +85,14 @@ class LinkedList:
 ll = LinkedList()
 ll.append(1)
 ll.append(2)
+ll.append(2)
 ll.append(3)
-ll.prepend(0)
-ll.prepend(25)
-ll.reverseList()
+ll.append(3)
+ll.append(3)
+ll.append(4)
+ll.append(5)
+ll.append(6)
+ll.append(6)
+ll.printList()
+ll.removeDuplicatesFromSorted()
 ll.printList()
