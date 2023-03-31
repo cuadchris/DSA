@@ -14,7 +14,7 @@ class LinkedList:
         self.head = node
 
     def append(self, data):
-        if self.head == None:
+        if not self.head:
             self.head = Node(data)
             return
         current = self.head
@@ -24,7 +24,7 @@ class LinkedList:
         current.next = Node(data)
 
     def deleteValue(self, data):
-        if self.head == None:
+        if not self.head:
             print('empty list')
             return
         if self.head.data == data:
@@ -56,7 +56,7 @@ class LinkedList:
 
     # This one was a little tricky.
     def reverseList(self):
-        if self.head == None:
+        if not self.head:
             print('cannot reverse empty list')
             return
 
@@ -73,26 +73,10 @@ class LinkedList:
         self.head = prev
 
     def printList(self):
-        if self.head == None:
+        if not self.head:
             print('empty list')
         else:
             current = self.head
             while current:
                 print(current.data, end=' ')
                 current = current.next
-
-
-ll = LinkedList()
-ll.append(1)
-ll.append(2)
-ll.append(2)
-ll.append(3)
-ll.append(3)
-ll.append(3)
-ll.append(4)
-ll.append(5)
-ll.append(6)
-ll.append(6)
-ll.printList()
-ll.removeDuplicatesFromSorted()
-ll.printList()
