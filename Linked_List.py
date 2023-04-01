@@ -54,6 +54,24 @@ class LinkedList:
             else:
                 current = current.next
 
+    def removeDuplicatesFromUnsorted(self):
+        if not self.head:
+            print('empty list')
+            return
+
+        seen = {}
+        prev = None
+        current = self.head
+
+        while current:
+            if current.data in seen:
+                prev.next = current.next
+                current = current.next
+            else:
+                seen[current.data] = 1
+                prev = current
+                current = current.next
+
     # This one was a little tricky.
     def reverseList(self):
         if not self.head:
@@ -80,3 +98,22 @@ class LinkedList:
             while current:
                 print(current.data, end=' ')
                 current = current.next
+
+
+ll = LinkedList()
+ll.append(1)
+ll.append(2)
+ll.append(7)
+ll.append(3)
+ll.append(4)
+ll.append(1)
+ll.append(1)
+ll.append(7)
+ll.append(6)
+ll.append(2)
+ll.append(3)
+ll.append(9)
+ll.append(9)
+ll.printList()
+ll.removeDuplicatesFromUnsorted()
+ll.printList()
