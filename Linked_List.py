@@ -98,22 +98,3 @@ class LinkedList:
             while current:
                 print(current.data, end=' ')
                 current = current.next
-
-
-ll = LinkedList()
-ll.append(1)
-ll.append(2)
-ll.append(7)
-ll.append(3)
-ll.append(4)
-ll.append(1)
-ll.append(1)
-ll.append(7)
-ll.append(6)
-ll.append(2)
-ll.append(3)
-ll.append(9)
-ll.append(9)
-ll.printList()
-ll.removeDuplicatesFromUnsorted()
-ll.printList()
