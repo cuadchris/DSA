@@ -54,6 +54,24 @@ class LinkedList:
             else:
                 current = current.next
 
+    def indexOf(self, data):
+        if not self.head:
+            print('list is empty')
+            return
+
+        current = self.head
+        index = 0
+
+        while current:
+            if current.data == data:
+                print(index)
+                return
+            current = current.next
+            index += 1
+
+        print(f'list does not contain {data}')
+        return
+
     def removeDuplicatesFromUnsorted(self):
         if not self.head:
             print('empty list')
