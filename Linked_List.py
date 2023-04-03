@@ -72,6 +72,21 @@ class LinkedList:
         print(f'list does not contain {data}')
         return
 
+    def getLength(self):
+        if not self.head:
+            print('list is empty')
+            return
+
+        current = self.head
+        counter = 0
+
+        while current:
+            counter += 1
+            current = current.next
+
+        print(counter)
+        return
+
     def removeDuplicatesFromUnsorted(self):
         if not self.head:
             print('empty list')
@@ -116,3 +131,16 @@ class LinkedList:
             while current:
                 print(current.data, end=' ')
                 current = current.next
+
+
+ll = LinkedList()
+ll.append(10)
+ll.append(22)
+ll.append(43)
+ll.append(84)
+ll.append(85)
+ll.append(90)
+ll.append(32)
+ll.printList()
+print('\n')
+ll.getLength()
