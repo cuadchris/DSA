@@ -1,3 +1,6 @@
+from Stack import Stack
+
+
 class Node:
     def __init__(self, data) -> None:
         self.data = data
@@ -79,6 +82,54 @@ class BinaryTree:
             traversal += (str(start.data) + '-')
         return traversal
 
+    def search(self, data):
+        if self.root:
+            found = self._search(self.root, data)
+            if found:
+                return True
+            return False
+        else:
+            return
+
+    # helper method
+    def _search(self, node, data):
+        if data > node.data and node.right:
+            return self._search(node.right, data)
+        if data < node.data and node.left:
+            return self._search(node.left, data)
+        if data == node.data:
+            return True
+
+    def size_recursive(self):
+        if not self.root:
+            return 0
+        return 1 + self._size_recursive(self.root.left) + self._size_recursive(self.root.right)
+
+    # helper method
+    def _size_recursive(self, node):
+        if not node:
+            return 0
+        return 1 + self._size_recursive(node.left) + self._size_recursive(node.right)
+
+    def size_iterative(self):
+        if not self.root:
+            return 0
+
+        stack = Stack()
+        stack.push(self.root)
+        size = 1
+
+        while stack:
+            node = stack.pop()
+            if node.left:
+                size += 1
+                stack.push(node.left)
+            if node.right:
+                size += 1
+                stack.push(node.right)
+
+        return size
+
 
 tree = BinaryTree()
 tree.insert(8)
@@ -87,6 +138,19 @@ tree.insert(4)
 tree.insert(2)
 tree.insert(10)
 tree.insert(6)
-print(tree.traverse_tree('inorder'))  # 2-4-6-8-9-10
-print(tree.traverse_tree('preorder'))  # 8-4-2-6-9-10
-print(tree.traverse_tree('postorder'))  # 2-6-4-10-9-8
+tree.insert(7)
+tree.insert(12)
+# print(tree.traverse_tree('inorder'))  # 2-4-6-8-9-10
+# print(tree.traverse_tree('preorder'))  # 8-4-2-6-9-10
+# print(tree.traverse_tree('postorder'))  # 2-6-4-10-9-8
+# print(tree.search(8))
+# print(tree.search(9))
+# print(tree.search(4))
+# print(tree.search(2))
+# print(tree.search(10))
+# print(tree.search(6))
+# print(tree.search(7))
+# print(tree.search(0))
+# print(tree.search(23))
+print(tree.size_recursive())
+print(tree.size_iterative())
