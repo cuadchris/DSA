@@ -44,6 +44,8 @@ class BinaryTree:
         else:
             print('invalid traversal type')
 
+    """DEPTH FIRST SEARCH"""
+
     # pre-order traversal.
     # check if current node is null
     # display node data
@@ -80,6 +82,8 @@ class BinaryTree:
             traversal = self.post_order(start.right, traversal)
             traversal += (str(start.data)) + '-'
         return traversal
+
+    """BREADTH FIRST SEARCH"""
 
     def level_order(self, start):
         if not start:
@@ -195,4 +199,4 @@ tree.insert(4)
 tree.insert(2)
 tree.insert(10)
 tree.insert(6)
-print(tree.traverse_tree('reverselevelorder'))
+print(tree.traverse_tree('levelorder'))
