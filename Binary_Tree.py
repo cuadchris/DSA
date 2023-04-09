@@ -191,6 +191,31 @@ class BinaryTree:
 
         return 1 + max(left, right)
 
+    def distinctNodes(self):
+        if not self.root:
+            return 0
+
+        seen = set()
+
+        return self._distinctNodes(self.root, seen)
+
+    def _distinctNodes(self, root, seen):
+
+        if not root or root.data in seen:
+            return len(seen)
+
+        # add the root to the set
+        seen.add(root.data)
+
+        left = self._distinctNodes(root.left, seen)
+        right = self._distinctNodes(root.right, seen)
+
+        # backtrack and remove the element from the set
+        seen.remove(root.data)
+
+        # return the max path
+        return max(left, right)
+
 
 tree = BinaryTree()
 tree.insert(8)
@@ -199,4 +224,7 @@ tree.insert(4)
 tree.insert(2)
 tree.insert(10)
 tree.insert(6)
+tree.insert(11)
+tree.insert(12)
 print(tree.traverse_tree('levelorder'))
+print(tree.distinctNodes())
