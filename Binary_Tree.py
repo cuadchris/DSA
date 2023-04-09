@@ -216,6 +216,40 @@ class BinaryTree:
         # return the max path
         return max(left, right)
 
+    # this was difficult to wrap my head around; will need to continue exploring this.
+    def delete(self, data):
+        if not self.root:
+            print('empty tree')
+            return
+        if data > self.root.data:
+            self.root.right = self._delete(self.root.right, data)
+        elif data < self.root.data:
+            self.root.left = self._delete(self.root.left, data)
+        else:
+            self.root = self._delete(self.root, data)
+
+    def _delete(self, node, data):
+        if data < node.data:
+            if node.left:
+                node.left = self._delete(node.left, data)
+        elif data > node.data:
+            if node.right:
+                node.right = self._delete(node.right, data)
+        else:
+            if not node.left and not node.right:
+                return None
+            elif not node.left:
+                return node.right
+            elif not node.right:
+                return node.left
+
+        minimum_value = node.right.find_min()
+        node.data = minimum_value
+
+        node.right = self._delete(node.right, minimum_value)
+
+        return node
+
 
 tree = BinaryTree()
 tree.insert(8)
@@ -224,7 +258,6 @@ tree.insert(4)
 tree.insert(2)
 tree.insert(10)
 tree.insert(6)
-tree.insert(11)
-tree.insert(12)
 print(tree.traverse_tree('levelorder'))
-print(tree.distinctNodes())
+tree.delete(8)
+print(tree.traverse_tree('levelorder'))
