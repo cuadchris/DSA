@@ -221,32 +221,31 @@ class BinaryTree:
         if not self.root:
             print('empty tree')
             return
-        if data > self.root.data:
-            self.root.right = self._delete(self.root.right, data)
-        elif data < self.root.data:
-            self.root.left = self._delete(self.root.left, data)
-        else:
-            self.root = self._delete(self.root, data)
+
+        self.root = self._delete(self.root, data)
 
     def _delete(self, node, data):
-        if data < node.data:
-            if node.left:
-                node.left = self._delete(node.left, data)
-        elif data > node.data:
-            if node.right:
-                node.right = self._delete(node.right, data)
-        else:
+        if not node:
+            return None
+
+        if node.data == data:
             if not node.left and not node.right:
                 return None
-            elif not node.left:
+            if not node.left and node.right:
                 return node.right
-            elif not node.right:
+            if not node.right and node.left:
                 return node.left
 
-        minimum_value = node.right.find_min()
-        node.data = minimum_value
+            min = node.right.find_min()
 
-        node.right = self._delete(node.right, minimum_value)
+            node.data = min
+
+            node.right = self._delete(node.right, node.data)
+
+        elif node.data > data:
+            node.left = self._delete(node.left, data)
+        else:
+            node.right = self._delete(node.right, data)
 
         return node
 
