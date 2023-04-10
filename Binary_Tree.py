@@ -251,12 +251,3 @@ class BinaryTree:
 
 
 tree = BinaryTree()
-tree.insert(8)
-tree.insert(9)
-tree.insert(4)
-tree.insert(2)
-tree.insert(10)
-tree.insert(6)
-print(tree.traverse_tree('levelorder'))
-tree.delete(8)
-print(tree.traverse_tree('levelorder'))
