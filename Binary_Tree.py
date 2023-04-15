@@ -248,12 +248,3 @@ class BinaryTree:
             node.right = self._delete(node.right, data)
 
         return node
-
-
-tree = BinaryTree()
-tree.insert(8)
-tree.insert(10)
-tree.insert(12)
-tree.insert(5)
-tree.insert(3)
-print(tree.traverse_tree('preorder'))
