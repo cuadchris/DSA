@@ -248,3 +248,5 @@ class BinaryTree:
             node.right = self._delete(node.right, data)
 
         return node
+
+tree1 = BinaryTree()
